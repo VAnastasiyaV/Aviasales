@@ -132,9 +132,10 @@ class TicketList extends React.PureComponent {
          });
       return (
          <>
-            {load}
+
             {empty}
             <ul className='ticket-list' >
+               {load}
                {elements}
             </ul>
          </>

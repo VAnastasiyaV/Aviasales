@@ -67,12 +67,11 @@
 
 .spinner {
    width: 100%;
-   grid-row: 3/4;
    align-self: start;
 
    &__label {
       @include font($font-weight, $font-size--small, $line-height--small, 0.5px);
-      margin-top: 1.5rem;
+      margin-top: 1rem;
    }
 
    &__animation {

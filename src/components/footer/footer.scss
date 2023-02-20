@@ -25,6 +25,8 @@
       text-align: center;
       border-radius: 0.5em;
       background-color: $btn-color;
+      padding: 20px 1em;
+
 
       @media screen and (max-width: $screen-xs) {
          @include font($font-weight--bold, $font-size--small, $line-height--text, 0.5px);
