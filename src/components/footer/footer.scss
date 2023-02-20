@@ -1,0 +1,52 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.footer {
+   grid-column: 2/3;
+   grid-row: 4/5;
+   justify-content: flex-end;
+   display: flex;
+   max-width: 520px;
+   min-width: 133px;
+   width: 100%;
+   @include font($font-weight--bold, $font-size, 0, 0.5px);
+
+   &__button {
+      width: 50%;
+      max-height: 80px;
+      min-height: 40px;
+      width: 50%;
+      font-family: $font-family;
+      @include font($font-weight--bold, $font-size, $line-height--text, 0.5px);
+      text-transform: uppercase;
+      border: 1px solid $grey-light;
+      text-align: center;
+      border-radius: 0.5em;
+      background-color: $btn-color;
+
+      @media screen and (max-width: $screen-xs) {
+         @include font($font-weight--bold, $font-size--small, $line-height--text, 0.5px);
+         padding: 20px 1em;
+      }
+
+      @media screen and (max-width: $screen-md) {
+         padding: 5px 0.25em;
+      }
+
+      &:hover,
+      :focus {
+         background-color: $hover-color;
+      }
+
+      &:active {
+         background-color: $blue;
+      }
+
+      &--disabled {
+         background-color: $hover-color;
+         color: $grey-dark;
+      }
+   }
+}

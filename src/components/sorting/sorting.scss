@@ -1,0 +1,56 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.sorting {
+   grid-column: 2/3;
+   grid-row: 2/3;
+   justify-self: center;
+   display: flex;
+   max-width: 520px;
+   min-width: 133px;
+   width: 100%;
+   @include font($font-weight--bold, $font-size, $line-height, 0.5px);
+
+   &__button {
+      width: 50%;
+      max-height: 80px;
+      font-family: $font-family;
+      @include font($font-weight--bold, $font-size, $line-height, 0.5px);
+      text-transform: uppercase;
+      border: 1px solid $grey-light;
+      text-align: center;
+      background-color: $btn-color;
+      padding: 20px 1em;
+
+      @media screen and (max-width: $screen-xs) {
+         @include font($font-weight--bold, $font-size--small, $line-height--text, 0.5px);
+      }
+
+      @media screen and (max-width: $screen-md) {
+         padding: 5px 0.25em;
+      }
+
+      &:hover,
+      :focus {
+         background-color: $hover-color;
+      }
+
+      &--left {
+         border-top-left-radius: 0.5em;
+         border-bottom-left-radius: 0.5em;
+         border-right: none;
+      }
+
+      &--right {
+         border-top-right-radius: 0.5em;
+         border-bottom-right-radius: 0.5em;
+      }
+
+      &--active {
+         color: $color-main;
+         background-color: $blue;
+      }
+   }
+}

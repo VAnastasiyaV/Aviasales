@@ -1,0 +1,111 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.transfers-filter {
+   grid-column: 1/2;
+   grid-row: 2/4;
+   justify-self: right;
+   height: 294px;
+   max-width: 290px;
+   font-style: normal;
+   border-top: 1px solid $color-main;
+   border-radius: 5px;
+   background-color: $color-main;
+   background-attachment: $color-main;
+   box-shadow: 0 0.25em 1em $shadow-color;
+
+   @media screen and (max-width: $screen-md) {
+      max-width: 520px;
+      margin-bottom: 0.75rem;
+      box-shadow: none;
+      border: 1px solid $grey-light;
+      height: auto;
+   }
+
+   &__title {
+      text-transform: uppercase;
+      @include font($font-weight--bold, $font-size, $line-height--text, 0.5px);
+      margin: 0.9em 0.9em 0.45em 0.9em;
+
+      @media screen and (max-width: $screen-md) {
+         margin: 0.5em 0.3em 0.3em 0.9em;
+         @include font($font-weight--bold, $font-size--small, $line-height--small, 0.5px);
+
+      }
+   }
+
+   &__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @media screen and (max-width: $screen-md) {
+         display: flex;
+         flex-wrap: wrap;
+      }
+   }
+
+   &__item {
+      margin: 0;
+      padding: 0.45em 0.9em 0.45em 0.9em;
+
+      @media screen and (min-width: $screen-md) and (max-width: $screen-lg) {
+         padding: 0.3em 0.9em 0.3em 0.9em;
+      }
+
+      @media screen and (max-width: $screen-md) {
+         padding: 0em 0em 0em 0.9em;
+         min-width: 8.1em;
+      }
+   }
+
+   &__item:hover {
+      background-color: $hover-color;
+      ;
+   }
+
+   &__checkbox {
+      position: absolute;
+      opacity: 0;
+      width: 1.3em;
+      height: 1.3em;
+   }
+
+   &__checkbox+label {
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+   }
+
+   &__checkbox+label::before {
+      content: '';
+      display: inline-block;
+      width: 1.3em;
+      height: 1.3em;
+      border: 1px solid $blue-lighten;
+      border-radius: 0.1em;
+      margin-right: 0.6em;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100% 100%;
+   }
+
+   &__checkbox:checked+label::before {
+      border: 1px solid $blue;
+      background-image: url("check.png");
+   }
+
+   label:hover:before>&__checkbox:not(:checked):not(:disabled) {
+      border-color: $blue;
+   }
+
+   label:hover:before>&__checkbox:focus:not(:checked) {
+      border-color: $blue-light;
+   }
+
+   label:hover:before>&__checkbox:focus {
+      box-shadow: 0 0 0 0.2rem $checked-focus-color;
+   }
+}

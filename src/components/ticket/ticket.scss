@@ -1,0 +1,77 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.css-dev-only-do-not-override-1n7nwfa {
+
+   @include font($font-weight, $font-size, $line-height--text, 0.5px);
+}
+
+.ticket {
+   max-width: 500px;
+   padding-left: 1.5rem;
+   padding-bottom: 1.5rem;
+   margin-bottom: 1.5em;
+   background-color: $color-main;
+   border-top: 1px solid $color-main;
+   border-radius: 5px;
+   box-shadow: 0 0.25em 1em $shadow-color;
+
+   @media screen and (min-width: $screen-xl) {
+      width: 500px;
+   }
+
+   @media screen and (max-width: $screen-xs) {
+      padding-left: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5em;
+      @include font($font-weight--bold, $font-size--small, $line-height--text, 0.5px);
+   }
+
+   @media screen and (max-width: $screen-md) {
+      padding-left: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1em;
+   }
+
+   &__price {
+      width: 50%;
+      @include font($font-weight--bold, $font-size--price, $line-height, 0.5px);
+      color: $blue;
+      margin: 1.5rem 0;
+
+      @media screen and (max-width: $screen-xs) {
+         margin: 0.5rem 0;
+         @include font($font-weight--bold, $font-size, $line-height--text, 0.5px);
+      }
+   }
+
+   &__img {
+      @media screen and (max-width: $screen-md) {
+         margin-left: -1.2rem;
+         justify-self: end;
+      }
+   }
+
+   &__info {
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0px 0px 0px 0px;
+      padding: 0;
+
+      @media screen and (max-width: $screen-xs) {
+         margin-right: 0.2rem;
+         @include font($font-weight--bold, $font-size--small, $line-height--small, 0.5px);
+      }
+
+      &--grey {
+         color: $grey;
+         font-size: small;
+      }
+
+      &--lower {
+         text-transform: lowercase;
+      }
+   }
+}

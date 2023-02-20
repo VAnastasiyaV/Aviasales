@@ -1,0 +1,33 @@
+@mixin font($fw, $fs, $lh, $ls) {
+   font-weight: $fw;
+   font-size: $fs;
+   line-height: $lh;
+   letter-spacing: $ls;
+}
+
+// @mixin sizes-border-color($h, $w, $bor, $bor-r, $col, $back-c) {
+//    height: $h;
+//    width: $w;
+//    border: $bor;
+//    border-radius: $bor-r;
+//    color: $col;
+//    background-color: $back-c;
+// }
+
+// @mixin psevdo-el($p-h, $p-w) {
+//    content: '';
+//    height: $p-h;
+//    width: $p-w;
+// }
+
+// @mixin button--arrow($bor, $rotate) {
+//    position: absolute;
+//    -webkit-box-sizing: border-box;
+//               box-sizing: border-box;
+//       border-top: $bor;
+//       border-right: $bor;
+//       border-radius: 1px;
+//       -webkit-transform: rotate($rotate);
+//           -ms-transform: rotate($rotate);
+//               transform: rotate($rotate);
+// }

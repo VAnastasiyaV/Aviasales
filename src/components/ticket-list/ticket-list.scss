@@ -1,0 +1,11 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.ticket-list {
+   grid-row: 3/4;
+   justify-self: center;
+   list-style: none;
+   padding: 0;
+}

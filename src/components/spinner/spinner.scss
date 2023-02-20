@@ -1,0 +1,87 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+@keyframes stretching {
+
+   0%,
+   10% {
+      width: 10%;
+   }
+
+   20%,
+   20% {
+      width: 20%;
+   }
+
+   40%,
+   40% {
+      width: 40%;
+   }
+
+   40%,
+   50% {
+      width: 50%;
+   }
+
+   50%,
+   60% {
+      width: 60%;
+   }
+
+   60%,
+   70% {
+      width: 70%;
+   }
+
+   70%,
+   80% {
+      width: 80%;
+   }
+
+   80%,
+   90% {
+      width: 90%;
+   }
+
+   90%,
+   100% {
+      width: 100%;
+   }
+}
+
+@keyframes blink {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+.spinner {
+   width: 100%;
+   grid-row: 3/4;
+   align-self: start;
+
+   &__label {
+      @include font($font-weight, $font-size--small, $line-height--small, 0.5px);
+      margin-top: 1.5rem;
+   }
+
+   &__animation {
+      width: 100%;
+      background: linear-gradient(90deg, $blue-lighten, $blue-light, $blue);
+      height: 0.5rem;
+      background-size: 400% 400%;
+      animation: blink 3s ease infinite, stretching 10s;
+      margin-bottom: 1rem;
+      transform: translate3d(0, 0, 0);
+   }
+}

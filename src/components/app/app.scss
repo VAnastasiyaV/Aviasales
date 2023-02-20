@@ -1,0 +1,25 @@
+@import "../../style/mixins.scss";
+@import "../../style/normalize.scss";
+@import "../../style/variables.scss";
+@import "../../style/fonts.scss";
+
+.app__body {
+   display: grid;
+   height: 100%;
+   grid-template-columns: 1fr 2fr;
+   gap: 1.5em;
+   padding: 1.5rem;
+   background-color: $color-secondary;
+   font-family: $font-family;
+   @include font($font-weight, $font-size, $line-height, 0.5px);
+
+   @media screen and (max-width: $screen-md) {
+      display: block;
+      padding: 1.5rem;
+   }
+
+   @media screen and (max-width: $screen-xs) {
+      padding: 0.5rem;
+      @include font($font-weight, $font-size--small, $line-height--small, 0.5px);
+   }
+}
