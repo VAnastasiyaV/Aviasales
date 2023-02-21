@@ -1,9 +1,6 @@
-// $grey-lighten: #F8F8F8;
-// $grey-lighter: #EAEAEA;
 $grey-light: #dae6f1;
 $grey: #b5b6bc;
 $grey-dark: #7E7E82;
-// $grey-darknest: #757474;
 $blue-lighten: #a8d7fe;
 $blue-light: #80bdff;
 $blue: #3ea8ff;
@@ -11,31 +8,24 @@ $btn-color: white;
 $shadow-color: rgba(50, 49, 49, 0.411);
 $hover-color: rgba(185, 217, 252, 0.25);
 $checked-focus-color: rgba(0, 123, 255, 0.25);
-// $color-success: $blue;
-// $border-color: $blue-lighten;
-// $change-color:$blue-light;
 $color-main: white;
 $color-secondary: #f5f7fa;
+$color-error: brown;
 $text-color: #1B1C21;
 $text-color--secondary: $grey-dark;
 
 $font-size: 1rem;
-// $font-size--link: 16px/14px*1rem;
-// $font-size--h1: 24px/14px*1rem;
+$font-size--large: 80px/14px*1rem;
+$font-size--big: 36px/14px*1rem;
 $font-size--price: 28px/14px*1rem;
 $font-size--small: 12px/14px*1rem;
 
 $font-weight: 500;
 $font-weight--bold: bold;
-// $font-weight--boldest: 900;
 
 $line-height: 24px/14px*1rem;
 $line-height--small: 16px/14px*1rem;
-// $line-height--table: 18px/14px*1rem;
 $line-height--text: 20px/14px*1rem;
-// $line-height--btn: 24px/14px*1rem;
-// $line-height--h1: 32px/14px*1rem;
-// $line-height--title: 40px/14px*1rem;
 
 $font-family: "Arial", sans-serif;
 
@@ -43,12 +33,3 @@ $screen-xs: 450px;
 $screen-xl: 584px;
 $screen-md: 760px;
 $screen-lg: 852px;
-// $screen-xl: 1440px;
-
-// %btn-hover{
-//    -webkit-transition: 0.5s;
-//       -o-transition: 0.5s;
-//       transition: 0.5s;
-//    opacity: 0.7;
-//    cursor: pointer;
-// }

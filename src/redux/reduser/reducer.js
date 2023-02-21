@@ -3,6 +3,6 @@ import ticketReducer from './ticketReducer';
 import filterReducer from './filterReducer';
 
 export default combineReducers({
-   tickets: ticketReducer,
-   filters: filterReducer
+    tickets: ticketReducer,
+    filters: filterReducer
 });

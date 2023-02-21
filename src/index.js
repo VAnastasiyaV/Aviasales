@@ -9,11 +9,11 @@ import App from './components/app';
 import './index.css';
 
 store
-   .dispatch(fetchData())
+    .dispatch(fetchData())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <Provider store={store}>
-      <App />
-   </Provider>);
+    <Provider store={store}>
+        <App />
+    </Provider>);
 
