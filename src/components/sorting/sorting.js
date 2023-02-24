@@ -1,22 +1,24 @@
 import React, { } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { setSorting } from '../../redux/actions/actions'
+import useInfo from '../../redux/useInfo';
 
 import './sorting.scss';
 
-function Sorting(props) {
+function Sorting() {
+    const {
+        typeOfSorting,
+        setSorting,
+    } = useInfo();
 
     const onClickBtnActive = (e) => {
-        if (e.target.id !== props.typeOfSorting)
-            props.setSorting(e.target.id)
+        if (e.target.id !== typeOfSorting)
+            setSorting(e.target.id)
     }
 
     const getClassName = (btn) => {
         let classNameBtn = btn === 'cheapest'
             ? 'sorting__button sorting__button--left'
             : 'sorting__button sorting__button--right';
-        if (btn === props.typeOfSorting) classNameBtn += ' sorting__button--active';
+        if (btn === typeOfSorting) classNameBtn += ' sorting__button--active';
         return classNameBtn
     }
 
@@ -42,12 +44,4 @@ function Sorting(props) {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    setSorting: bindActionCreators(setSorting, dispatch),
-})
-
-const mapStateToProps = state => ({
-    typeOfSorting: state.filters.sorting,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sorting);
+export default Sorting;

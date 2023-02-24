@@ -1,11 +1,13 @@
 import React, { } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { showTickets } from '../../redux/actions/actions'
+import useInfo from '../../redux/useInfo';
 
 import './footer.scss';
 
-function Footer({ showTickets, numberTickets }) {
+function Footer() {
+    const {
+        showTickets,
+        numberTickets,
+    } = useInfo();
 
     const onClickBtn = (e) => {
         showTickets(e.target.id)
@@ -36,12 +38,4 @@ function Footer({ showTickets, numberTickets }) {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    showTickets: bindActionCreators(showTickets, dispatch),
-})
-
-const mapStateToProps = state => ({
-    numberTickets: state.filters.numberTickets,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;

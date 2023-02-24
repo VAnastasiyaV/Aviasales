@@ -3,7 +3,7 @@
 @import "../../style/variables.scss";
 @import "../../style/fonts.scss";
 
-.app__body {
+.app {
    display: grid;
    height: 100%;
    grid-template-columns: 1fr 2fr;
@@ -21,5 +21,11 @@
    @media screen and (max-width: $screen-xs) {
       padding: 0.5rem;
       @include font($font-weight, $font-size--small, $line-height--small, 0.5px);
+   }
+
+   &__offline {
+      text-align: center;
+      margin-top: 45vh;
+      height: 100vh;
    }
 }

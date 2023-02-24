@@ -1,9 +1,12 @@
 import React, { } from 'react';
-import { connect } from 'react-redux';
+import useInfo from '../../redux/useInfo';
 
 import './checkbox.scss';
 
 function Checkbox(props) {
+    const {
+        transfersFilterArr
+    } = useInfo();
 
     const handleChange = () => {
         props.onChangeTransferFilter(props.value);
@@ -17,7 +20,7 @@ function Checkbox(props) {
                 className='transfers-filter__checkbox'
                 value={props.value}
                 onChange={handleChange}
-                checked={props.transfersFilterArr.includes(props.value)}
+                checked={transfersFilterArr.includes(props.value)}
             />
             <label className='transfers-filter__label' htmlFor={`filter${props.value}`}>
                 <span>{props.text}</span>
@@ -26,8 +29,4 @@ function Checkbox(props) {
     )
 }
 
-const mapStateToProps = (state) => ({
-    transfersFilterArr: state.filters.transfersFilterArr
-})
-
-export default connect(mapStateToProps)(Checkbox);
+export default Checkbox;

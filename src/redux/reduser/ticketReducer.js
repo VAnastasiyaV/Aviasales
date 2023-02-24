@@ -2,10 +2,10 @@ import * as actionsType from "../actions/actionsType";
 
 const initial = {
     allTickets: [],
-    filtratedTickets: [],
     allTicketsRecieved: false,
     url: '',
-    loading: false
+    loading: false,
+    error: null
 };
 
 // eslint-disable-next-line default-param-last
@@ -24,12 +24,6 @@ const ticketReducer = (state = initial, action) => {
     case actionsType.URL_RECIEVED: {
         const url = action.payload;
         return { ...state, url, loading: false };
-    }
-
-    case actionsType.TICKETS_FILTRATED:
-    {
-        const filtratedTickets = action.payload;
-        return { ...state, filtratedTickets };
     }
 
     case actionsType.ERROR_RECIEVED:

@@ -25,22 +25,17 @@ export const recievedError = (error) => ({
     payload: error
 });
 
-export const setTickets = (tickets) => ({
-    type: actions.TICKETS_FILTRATED,
-    payload: tickets
-});
-
-export const setSorting = (typeOfSorting) => ({
+export const setSortingActionCreator = (typeOfSorting) => ({
     type: actions.SET_SORTING,
     payload: typeOfSorting
 });
 
-export const showTickets = (button) => ({
+export const showTicketsActionCreator = (button) => ({
     type: actions.MORE_TICKETS,
     payload: button
 });
 
-export const fetchData = () => dispatch => {
+export const fetchDataActionCreator = () => dispatch => {
     dispatch(requestTickets());
     return fetch(`https://aviasales-test-api.kata.academy/search`)
         .then(response => response.json(),
@@ -52,14 +47,14 @@ export const fetchData = () => dispatch => {
         .catch(error => dispatch(recievedError(error)))
 };
 
-export const fetchTickets = (url, tickets = []) => dispatch => {
+export const fetchTicketsActionCreator = (url, tickets = []) => dispatch => {
     dispatch(requestTickets());
     return fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${url}`)
         .then(response => {
             if (response.status > 199 && response.status < 300) {
                 return response.json();
             }
-            dispatch(fetchTickets(url, tickets));
+            dispatch(fetchTicketsActionCreator(url, tickets));
             return Promise.reject(response);
 
         })
