@@ -14,6 +14,10 @@
    width: 100%;
    @include font($font-weight--bold, $font-size, 0, 0.5px);
 
+   &--loading {
+      grid-row: 5/6;
+   }
+
    &__button {
       width: 50%;
       max-height: 80px;

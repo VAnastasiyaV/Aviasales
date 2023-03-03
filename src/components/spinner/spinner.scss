@@ -68,6 +68,8 @@
 .spinner {
    width: 100%;
    align-self: start;
+   grid-column: 2/3;
+   grid-row: 3/4;
 
    &__label {
       @include font($font-weight, $font-size--small, $line-height--small, 0.5px);

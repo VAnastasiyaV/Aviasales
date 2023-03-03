@@ -1,7 +1,7 @@
 .empty {
    width: 100%;
    padding: 2rem 0;
+   grid-row: 4/5;
+   grid-column: 2/3;
    text-align: center;
-   grid-row: 3/4;
-   justify-self: center;
 }

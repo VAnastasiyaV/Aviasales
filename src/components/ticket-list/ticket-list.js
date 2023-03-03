@@ -8,8 +8,8 @@ import {
     SelectAllTickets,
     SelectAllTicketsRecieved,
 } from "../../redux/reduser/ticketReducer";
+
 import Ticket from '../ticket'
-import Spinner from '../spinner'
 import Empty from '../empty'
 import Footer from '../footer';
 
@@ -21,6 +21,7 @@ function TicketList() {
     const transfersFilterArr = SelectTransfersFilterArr();
     const typeOfSorting = SelectTypeOfSorting();
     const numberTickets = SelectNumberTickets();
+    let empty = null;
 
     const getFiltratedTickets = () => {
         let selectedTickets = [];
@@ -115,16 +116,19 @@ function TicketList() {
         ? <Footer />
         : null;
 
-    const load = !allTicketsRecieved ? <Spinner /> : null;
+    let classTicketList = 'ticket-list';
 
-    const empty = tickets.length === 0
-        ? <Empty />
-        : null;
+    if (!allTicketsRecieved) classTicketList += ' ticket-list--loading';
+
+    if (allTickets.length !== 0) {
+        empty = tickets.length === 0
+            ? <Empty />
+            : null;
+    };
 
     return (
         <>
-            <ul className='ticket-list' >
-                {load}
+            <ul className={classTicketList} >
                 {elements}
             </ul>
             {empty}

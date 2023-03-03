@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { Offline, Online } from "react-detect-offline";
 import {
+    SelectAllTicketsRecieved,
     SelectError,
     fetchDataActionCreator,
 } from "../../redux/reduser/ticketReducer";
@@ -12,13 +13,14 @@ import Sorting from '../sorting';
 import Header from '../header';
 import TicketList from '../ticket-list';
 import ErrorIndicator from '../error-indicator';
+import Spinner from '../spinner'
 
 import './app.scss';
 
 function App() {
     const dispatch = useDispatch();
     const error = SelectError();
-
+    const allTicketsRecieved = SelectAllTicketsRecieved();
     const fetchData = useCallback(
         () => dispatch(fetchDataActionCreator()),
         [dispatch]
@@ -33,6 +35,8 @@ function App() {
         return <ErrorIndicator />
     }
 
+    const load = !allTicketsRecieved ? <Spinner /> : null;
+
     return (
         <div>
             <Online>
@@ -40,6 +44,7 @@ function App() {
                     <Header />
                     <TransfersFilter />
                     <Sorting />
+                    {load}
                     <TicketList />
                 </div>
             </Online>

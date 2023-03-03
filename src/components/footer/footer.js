@@ -1,11 +1,12 @@
-import React, {  useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { SelectAllTicketsRecieved } from "../../redux/reduser/ticketReducer";
 import { showTicketsAction } from "../../redux/reduser/filterReducer";
 
 import './footer.scss';
 
 function Footer() {
+    const allTicketsRecieved = SelectAllTicketsRecieved();
     const dispatch = useDispatch();
     const showTickets = useCallback(
         (id) => dispatch(showTicketsAction(id)),
@@ -16,8 +17,12 @@ function Footer() {
         showTickets(e.target.id)
     }
 
+    let classFooter = 'footer';
+
+    if (!allTicketsRecieved) classFooter += ' footer--loading';
+
     return (
-        <div className='footer'>
+        <div className={classFooter}>
             <button
                 id='moreTickets'
                 type="button"
