@@ -1,45 +1,34 @@
-import * as actionsType from "../actions/actionsType";
+import { useSelector } from 'react-redux';
 
-const initial = {
-    transfersFilterArr: [],
-    sorting: 'cheapest',
-    numberTickets: 1
-};
-// eslint-disable-next-line default-param-last
-const filterReducer = (state = initial, action) => {
-    switch (action.type) {
-    case actionsType.SET_TRANSFER_FILTER:
-    {
-        const transfersFilterArr = getTransfers(action.numberTransfers, state.transfersFilterArr);
-        return { ...state, transfersFilterArr, numberTickets: 1 };
-    }
+// Actions Type
+const SET_TRANSFER_FILTER = 'SET_TRANSFER_FILTER';
+const SET_SORTING = 'SET_SORTING';
+const MORE_TICKETS = 'MORE_TICKETS';
 
-    case actionsType.SET_SORTING:
-    {
-        const sorting = action.payload;
-        return { ...state, sorting };
-    }
+// Actions
+export const setTransfersAction = (numberTransfers) => ({
+    type: SET_TRANSFER_FILTER,
+    numberTransfers
+});
 
-    case actionsType.MORE_TICKETS:
-    {
-        let numberTickets;
-        if (action.payload === 'moreTickets') {
-            numberTickets = state.numberTickets + 1;
-        } else {
-            numberTickets = state.numberTickets > 1
-                ? state.numberTickets - 1
-                : state.numberTickets;
-        }
-        return { ...state, numberTickets };
-    }
+export const setSortingAction = (typeOfSorting) => ({
+    type: SET_SORTING,
+    payload: typeOfSorting
+});
 
-    default:
-        return state;
-    }
-}
+export const showTicketsAction = (button) => ({
+    type: MORE_TICKETS,
+    payload: button
+});
 
-export default filterReducer;
+// Selectors
+export const SelectTransfersFilterArr = () => useSelector(state => state.filters.transfersFilterArr);
 
+export const SelectTypeOfSorting = () => useSelector(state => state.filters.sorting);
+
+export const SelectNumberTickets = () => useSelector(state => state.filters.numberTickets);
+
+// filterReducer
 const getTransfers = (numberTransfers, transfersFilterArr) => {
     let arrNumberTransfers = [];
 
@@ -70,3 +59,42 @@ const getTransfers = (numberTransfers, transfersFilterArr) => {
 
     return transfersFilterArr;
 }
+
+
+const initial = {
+    transfersFilterArr: [],
+    sorting: 'cheapest',
+    numberTickets: 1
+};
+// eslint-disable-next-line default-param-last
+export const filterReducer = (state = initial, action) => {
+    switch (action.type) {
+    case SET_TRANSFER_FILTER:
+    {
+        const transfersFilterArr = getTransfers(action.numberTransfers, state.transfersFilterArr);
+        return { ...state, transfersFilterArr, numberTickets: 1 };
+    }
+
+    case SET_SORTING:
+    {
+        const sorting = action.payload;
+        return { ...state, sorting };
+    }
+
+    case MORE_TICKETS:
+    {
+        let numberTickets;
+        if (action.payload === 'moreTickets') {
+            numberTickets = state.numberTickets + 1;
+        } else {
+            numberTickets = state.numberTickets > 1
+                ? state.numberTickets - 1
+                : state.numberTickets;
+        }
+        return { ...state, numberTickets };
+    }
+
+    default:
+        return state;
+    }
+};

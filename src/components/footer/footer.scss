@@ -46,10 +46,5 @@
       &:active {
          background-color: $blue;
       }
-
-      &--disabled {
-         background-color: $hover-color;
-         color: $grey-dark;
-      }
    }
 }

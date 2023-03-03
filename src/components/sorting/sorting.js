@@ -1,13 +1,20 @@
-import React, { } from 'react';
-import useInfo from '../../redux/useInfo';
+import React, {  useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import {
+    SelectTypeOfSorting,
+    setSortingAction
+} from "../../redux/reduser/filterReducer";
 
 import './sorting.scss';
 
 function Sorting() {
-    const {
-        typeOfSorting,
-        setSorting,
-    } = useInfo();
+    const dispatch = useDispatch();
+    const typeOfSorting = SelectTypeOfSorting();
+    const setSorting = useCallback(
+        (id) => dispatch(setSortingAction(id)),
+        [dispatch]
+    );
 
     const onClickBtnActive = (e) => {
         if (e.target.id !== typeOfSorting)

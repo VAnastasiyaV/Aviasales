@@ -1,6 +1,11 @@
-import React, { } from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Offline, Online } from "react-detect-offline";
-import useInfo from '../../redux/useInfo';
+import {
+    SelectError,
+    fetchDataActionCreator,
+} from "../../redux/reduser/ticketReducer";
 
 import TransfersFilter from '../transfers-filter';
 import Sorting from '../sorting';
@@ -11,13 +16,20 @@ import ErrorIndicator from '../error-indicator';
 import './app.scss';
 
 function App() {
-    const {
-        error,
-        url,
-    } = useInfo();
+    const dispatch = useDispatch();
+    const error = SelectError();
 
+    const fetchData = useCallback(
+        () => dispatch(fetchDataActionCreator()),
+        [dispatch]
+    );
 
-    if (error && !url) {
+    useEffect(() => {
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    if (error) {
         return <ErrorIndicator />
     }
 
