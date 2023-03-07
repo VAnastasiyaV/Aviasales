@@ -1,10 +1,10 @@
-import React, { useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Offline, Online } from "react-detect-offline";
 import {
-    SelectAllTicketsRecieved,
-    SelectError,
+    selectAllTicketsRecieved,
+    selectError,
     fetchDataActionCreator,
 } from "../../redux/reduser/ticketReducer";
 
@@ -19,17 +19,15 @@ import './app.scss';
 
 function App() {
     const dispatch = useDispatch();
-    const error = SelectError();
-    const allTicketsRecieved = SelectAllTicketsRecieved();
-    const fetchData = useCallback(
-        () => dispatch(fetchDataActionCreator()),
-        [dispatch]
-    );
+    const error = useSelector(selectError);
+    const allTicketsRecieved = useSelector(selectAllTicketsRecieved);
 
     useEffect(() => {
-        fetchData()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        dispatch(fetchDataActionCreator());
+    }, [dispatch]
+    );
+
+
 
     if (error) {
         return <ErrorIndicator />

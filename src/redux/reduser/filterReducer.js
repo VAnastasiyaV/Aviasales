@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-
 // Actions Type
 const SET_TRANSFER_FILTER = 'SET_TRANSFER_FILTER';
 const SET_SORTING = 'SET_SORTING';
@@ -22,11 +20,9 @@ export const showTicketsAction = (button) => ({
 });
 
 // Selectors
-export const SelectTransfersFilterArr = () => useSelector(state => state.filters.transfersFilterArr);
-
-export const SelectTypeOfSorting = () => useSelector(state => state.filters.sorting);
-
-export const SelectNumberTickets = () => useSelector(state => state.filters.numberTickets);
+export const selectTransfersFilterArr = state => state.filters.transfersFilterArr;
+export const selectTypeOfSorting = (state) => state.filters.sorting;
+export const selectNumberTickets = state => state.filters.numberTickets;
 
 // filterReducer
 const getTransfers = (numberTransfers, transfersFilterArr) => {

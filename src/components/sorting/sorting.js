@@ -1,8 +1,9 @@
-import React, {  useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch , useSelector } from 'react-redux';
+
 
 import {
-    SelectTypeOfSorting,
+    selectTypeOfSorting,
     setSortingAction
 } from "../../redux/reduser/filterReducer";
 
@@ -10,7 +11,7 @@ import './sorting.scss';
 
 function Sorting() {
     const dispatch = useDispatch();
-    const typeOfSorting = SelectTypeOfSorting();
+    const typeOfSorting = useSelector(selectTypeOfSorting);
     const setSorting = useCallback(
         (id) => dispatch(setSortingAction(id)),
         [dispatch]

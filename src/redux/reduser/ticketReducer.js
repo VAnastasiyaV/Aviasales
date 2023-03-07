@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-
 // Actions Type
 const TICKETS_REQUEST = 'TICKETS_REQUEST';
 const TICKETS_RECIEVED = 'TICKETS_RECIEVED';
@@ -66,7 +64,7 @@ export const fetchTicketsActionCreator = (url, tickets = []) => dispatch => {
                     departureDate1: item.segments[0].date,
                     duration1: item.segments[0].duration,
                     stopNames1: item.segments[0].stops,
-                    origin_name2: item.segments[1].origin,
+                    originName2: item.segments[1].origin,
                     destination2: item.segments[1].destination,
                     departureDate2: item.segments[1].date,
                     duration2: item.segments[1].duration,
@@ -90,10 +88,10 @@ export const fetchTicketsActionCreator = (url, tickets = []) => dispatch => {
 }
 
 // Selectors
-export const SelectLoading = () => useSelector(state => state.tickets.loading);
-export const SelectAllTickets = () => useSelector(state => state.tickets.allTickets);
-export const SelectError = () => useSelector(state => state.tickets.error);
-export const SelectAllTicketsRecieved = () => useSelector(state => state.tickets.allTicketsRecieved);
+export const selectLoading = (state) => state.tickets.loading;
+export const selectAllTickets = (state) => state.tickets.allTickets;
+export const selectError = (state) => state.tickets.error;
+export const selectAllTicketsRecieved = (state) => state.tickets.allTicketsRecieved;
 
 
 // ticketReducer

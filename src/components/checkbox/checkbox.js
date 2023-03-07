@@ -1,11 +1,12 @@
 import React, { } from 'react';
-import { SelectTransfersFilterArr } from "../../redux/reduser/filterReducer";
+import { useSelector } from 'react-redux';
+import { selectTransfersFilterArr } from "../../redux/reduser/filterReducer";
 
 import './checkbox.scss';
 
 function Checkbox(props) {
 
-    const transfersFilterArr = SelectTransfersFilterArr();
+    const transfersFilterArr = useSelector(selectTransfersFilterArr);
 
     const handleChange = () => {
         props.onChangeTransferFilter(props.value);
