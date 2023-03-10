@@ -62,35 +62,37 @@ const initial = {
     sorting: 'cheapest',
     numberTickets: 1
 };
+
 // eslint-disable-next-line default-param-last
 export const filterReducer = (state = initial, action) => {
     switch (action.type) {
-    case SET_TRANSFER_FILTER:
-    {
-        const transfersFilterArr = getTransfers(action.numberTransfers, state.transfersFilterArr);
-        return { ...state, transfersFilterArr, numberTickets: 1 };
-    }
 
-    case SET_SORTING:
-    {
-        const sorting = action.payload;
-        return { ...state, sorting };
-    }
+        case SET_TRANSFER_FILTER:
+            {
+                const transfersFilterArr = getTransfers(action.numberTransfers, state.transfersFilterArr);
+                return { ...state, transfersFilterArr, numberTickets: 1 };
+            }
 
-    case MORE_TICKETS:
-    {
-        let numberTickets;
-        if (action.payload === 'moreTickets') {
-            numberTickets = state.numberTickets + 1;
-        } else {
-            numberTickets = state.numberTickets > 1
-                ? state.numberTickets - 1
-                : state.numberTickets;
-        }
-        return { ...state, numberTickets };
-    }
+        case SET_SORTING:
+            {
+                const sorting = action.payload;
+                return { ...state, sorting };
+            }
 
-    default:
-        return state;
+        case MORE_TICKETS:
+            {
+                let numberTickets;
+                if (action.payload === 'moreTickets') {
+                    numberTickets = state.numberTickets + 1;
+                } else {
+                    numberTickets = state.numberTickets > 1
+                        ? state.numberTickets - 1
+                        : state.numberTickets;
+                }
+                return { ...state, numberTickets };
+            }
+
+        default:
+            return state;
     }
 };

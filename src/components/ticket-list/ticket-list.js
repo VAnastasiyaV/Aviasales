@@ -39,7 +39,6 @@ function TicketList() {
 
     const getSortedTickets = () => {
         let selectedTickets = getFiltratedTickets();
-
         selectedTickets = selectedTickets.sort((ticket1, ticket2) => {
 
             if (typeOfSorting === "cheapest") {
@@ -49,6 +48,7 @@ function TicketList() {
             if (ticket1.duration1 === ticket2.duration1) {
                 return ticket1.duration2 - ticket2.duration2;
             }
+
             return ticket1.duration1 - ticket2.duration1
         });
 
@@ -56,6 +56,7 @@ function TicketList() {
     };
 
     const tickets = getSortedTickets().slice(0, numberTickets * 5);
+
     const elements = tickets.map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key 
         <li key={index}>

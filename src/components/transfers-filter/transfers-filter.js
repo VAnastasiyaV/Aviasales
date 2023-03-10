@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo , useCallback } from 'react';
+import React, { useEffect, useMemo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setTransfersAction } from "../../redux/reduser/filterReducer";
@@ -38,6 +38,7 @@ export default function TicketList() {
     ], []);
 
     const dispatch = useDispatch();
+
     const setTransfer = useCallback(
         (arr) => dispatch(setTransfersAction(arr)),
         [dispatch]
@@ -46,15 +47,18 @@ export default function TicketList() {
     useEffect(() => {
         let arr = [];
         transfers.map((item) => {
+
             if (item.checked) {
                 arr = arr.concat(item.value);
             }
+
             return item;
         })
 
         if (arr.length > 0) {
             setTransfer(arr)
         }
+
     }, [transfers, setTransfer]);
 
     const elements = transfers.map((item) => (

@@ -52,7 +52,6 @@ export const fetchTicketsActionCreator = (url, tickets = []) => dispatch => {
                 return response.json();
             }
             throw new Error;
-
         })
         .then(res => {
             const resTickets = res.tickets.map(item => {
@@ -105,23 +104,24 @@ const initial = {
 // eslint-disable-next-line default-param-last
 export const ticketReducer = (state = initial, action) => {
     switch (action.type) {
-    case TICKETS_REQUEST:
-        return { ...state, loading: true };
 
-    case TICKETS_RECIEVED:
-    {
-        const allTickets = action.payload;
-        const allTicketsRecieved = action.stop;
-        return { ...state, allTickets, allTicketsRecieved, loading: false };
-    }
+        case TICKETS_REQUEST:
+            return { ...state, loading: true };
 
-    case ERROR_RECIEVED:
-    {
-        const error = action.payload;
-        return { ...state, error };
-    }
+        case TICKETS_RECIEVED:
+            {
+                const allTickets = action.payload;
+                const allTicketsRecieved = action.stop;
+                return { ...state, allTickets, allTicketsRecieved, loading: false };
+            }
 
-    default:
-        return state;
+        case ERROR_RECIEVED:
+            {
+                const error = action.payload;
+                return { ...state, error };
+            }
+
+        default:
+            return state;
     }
 };

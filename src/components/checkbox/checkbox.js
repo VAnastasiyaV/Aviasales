@@ -4,26 +4,26 @@ import { selectTransfersFilterArr } from "../../redux/reduser/filterReducer";
 
 import './checkbox.scss';
 
-function Checkbox(props) {
+function Checkbox({ value, text, onChangeTransferFilter }) {
 
     const transfersFilterArr = useSelector(selectTransfersFilterArr);
 
     const handleChange = () => {
-        props.onChangeTransferFilter(props.value);
+        onChangeTransferFilter(value);
     };
 
     return (
         <div className='filters'>
             <input
-                id={`filter${props.value}`}
+                id={`filter${value}`}
                 type='checkbox'
                 className='transfers-filter__checkbox'
-                value={props.value}
+                value={value}
                 onChange={handleChange}
-                checked={transfersFilterArr.includes(props.value)}
+                checked={transfersFilterArr.includes(value)}
             />
-            <label className='transfers-filter__label' htmlFor={`filter${props.value}`}>
-                <span>{props.text}</span>
+            <label className='transfers-filter__label' htmlFor={`filter${value}`}>
+                <span>{text}</span>
             </label>
         </div>
     )
